@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Logo</title>
+    <link rel="stylesheet" href="logo.css">
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #1a1a1a;
+        margin: 0;
+    }
+
+    .logo-container {
+        width: 90vw;
+        max-width: 300px;
+    }
+
+    canvas {
+        width: 100%;
+        height: auto;
+        background-color: black;
+        border-radius: 50%;
+    }
+
+  
+    @media (max-width: 600px) {
+        canvas {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = 'login page modified.html';
+        }, 8000);
+    </script>
+    
+    
+</head>
+<body>
+    <div class="logo-container">
+        <canvas id="gymLogo" width="300" height="300"></canvas>
+    </div>
+    
+    <script src="logo.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management System - Register</title>
+    <link rel="stylesheet" href="css_reg-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Add these validation-specific styles */
+        .error-message {
+            color: #ff3333;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .input-group input.error {
+            border: 2px solid #ff3333;
+            background-color: rgba(255, 51, 51, 0.05);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .password-requirements li.valid i {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <div class="register-header">
+                <h1 style="font-family: 'courier'; font-size: 40px; color: #fffc00; margin-bottom: 20px; font-weight: bolder;">REGISTER</h1>
+            </div>
+            <form id="registrationForm" action="register.php" method="POST" novalidate>
+                <div class="input-group">
+                    <label style="color: #fffc00;">Select Role:</label>
+                    <div class="role-options">
+                        <input type="radio" name="role" value="User" id="userRole" required>
+                        <label style="color: #fffc00;" for="userRole">User</label>
+                        <input type="radio" name="role" value="Trainer" id="trainerRole" required>
+                        <label style="color: #fffc00;" for="trainerRole">Trainer</label>
+                    </div>
+                    <span id="roleError" class="error-message"></span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    <span id="nameError" class="error-message"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <span id="emailError" class="error-message"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" maxlength="10" required>
+                    <span id="phoneError" class="error-message"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <span id="usernameError" class="error-message"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <!-- <div class="password-requirements" id="passwordRequirements">
+                        <p>Password must contain:</p>
+                        <ul>
+                            <li id="lengthCheck"><i class="fas fa-circle"></i> At least 8 characters</li>
+                            <li id="upperCheck"><i class="fas fa-circle"></i> One uppercase letter</li>
+                            <li id="lowerCheck"><i class="fas fa-circle"></i> One lowercase letter</li>
+                            <li id="numberCheck"><i class="fas fa-circle"></i> One number</li>
+                            <li id="specialCheck"><i class="fas fa-circle"></i> One special character</li>
+                        </ul>
+                    </div> -->
+                    <span id="passwordError" class="error-message"></span>
+                </div>
+
+                <button type="submit" class="btn-register">Register</button>
+                <p class="login-here"><a href="login page modified.html">Already have an account? Login Here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="errorPopup" class="error-popup">
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-circle"></i> Error</h3>
+            <div id="errorList"></div>
+            <button onclick="closeErrorPopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- <script src="validation.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            
+            // Real-time phone validation
+            document.getElementById('phone').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                if (this.value.length !== 10) {
+                    showError(this, 'phoneError', 'Phone number must be exactly 10 digits');
+                } else {
+                    clearError(this, 'phoneError');
+                }
+            });
+
+            // Real-time email validation
+            document.getElementById('email').addEventListener('input', function(e) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(this.value)) {
+                    showError(this, 'emailError', 'Please enter a valid email address');
+                } else {
+                    clearError(this, 'emailError');
+                }
+            });
+
+            // Real-time password validation
+            document.getElementById('password').addEventListener('input', function(e) {
+                const password = this.value;
+                const requirements = {
+                    length: password.length >= 8,
+                    upper: /[A-Z]/.test(password),
+                    lower: /[a-z]/.test(password),
+                    number: /[0-9]/.test(password),
+                    special: /[!@#$%^&*]/.test(password)
+                };
+
+                // Update requirement indicators
+                document.getElementById('lengthCheck').classList.toggle('valid', requirements.length);
+                document.getElementById('upperCheck').classList.toggle('valid', requirements.upper);
+                document.getElementById('lowerCheck').classList.toggle('valid', requirements.lower);
+                document.getElementById('numberCheck').classList.toggle('valid', requirements.number);
+                document.getElementById('specialCheck').classList.toggle('valid', requirements.special);
+
+                if (!Object.values(requirements).every(Boolean)) {
+                    showError(this, 'passwordError', 'Please meet all password requirements');
+                } else {
+                    clearError(this, 'passwordError');
+                }
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const errors = [];
+
+                // Role validation
+                const role = document.querySelector('input[name="role"]:checked');
+                if (!role) {
+                    errors.push('Please select a role');
+                    showError(null, 'roleError', 'Please select a role');
+                }
+
+                // Name validation
+                const name = document.getElementById('name').value.trim();
+                if (!name || name.length < 2) {
+                    errors.push('Name must be at least 2 characters');
+                    showError(document.getElementById('name'), 'nameError', 'Name must be at least 2 characters');
+                }
+
+                // Username validation
+                const username = document.getElementById('username').value.trim();
+                if (!username || username.length < 3) {
+                    errors.push('Username must be at least 3 characters');
+                    showError(document.getElementById('username'), 'usernameError', 'Username must be at least 3 characters');
+                }
+
+                // Phone validation
+                const phone = document.getElementById('phone').value.trim();
+                if (phone.length !== 10) {
+                    errors.push('Phone number must be exactly 10 digits');
+                    showError(document.getElementById('phone'), 'phoneError', 'Phone number must be exactly 10 digits');
+                }
+
+                // Email validation
+                const email = document.getElementById('email').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errors.push('Please enter a valid email address');
+                    showError(document.getElementById('email'), 'emailError', 'Please enter a valid email address');
+                }
+
+                if (errors.length === 0) {
+                    this.submit();
+                } else {
+                    showErrorPopup(errors);
+                }
+            });
+        });
+
+        function showError(input, errorId, message) {
+            const errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+            if (input) {
+                input.classList.add('error');
+            }
+        }
+
+        function clearError(input, errorId) {
+            const errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+            if (input) {
+                input.classList.remove('error');
+            }
+        }
+
+        function showErrorPopup(errors) {
+            const errorList = document.getElementById('errorList');
+            errorList.innerHTML = errors.map(error => `<p>${error}</p>`).join('');
+            document.getElementById('errorPopup').style.display = 'flex';
+        }
+
+        function closeErrorPopup() {
+            document.getElementById('errorPopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

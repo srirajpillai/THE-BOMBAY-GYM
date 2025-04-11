@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+body {
+   font-family: 'Courier', sans-serif;
+   background-image: url('1_5pyrdtIlYVp3ZvwR8C1Yrw.jpg');
+   background-size: cover; /* Ensures the image covers the entire viewport */
+   background-position: center center; 
+   background-repeat: no-repeat; /* Prevents the image from repeating */
+   height: 100vh; /* Ensures the body takes up the full height of the viewport */
+   margin: 0; /* Removes any default margin */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   overflow: hidden;
+}
+
+.radio-container {
+   display: flex;
+   align-items: center;
+   gap: 10px; /* Space between elements */
+}
+
+.radio-container input[type="radio"] {
+   margin-right: 5px;
+}
+
+.register-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   position: relative;
+   width: 100%;
+}
+
+.register-box {
+   background: rgba(255, 255, 255, 0.1); 
+   backdrop-filter: blur(10px); /* Blur effect to create the translucent glass look */
+   background-image: url('https://www.transparenttextures.com/patterns/ashlar-tiles.png'); /* Matte texture */
+   background-size: cover;
+   padding: 40px;
+   border-radius: 30px;
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 3D effect: soft shadow */
+   text-align: center;
+   width: 100%;
+   max-width: 350px;
+   position: relative;
+   z-index: 10;
+}
+
+.input-group {
+   margin-bottom: 15px;
+   position: relative;
+}
+
+.input-group input {
+   font-family: 'Courier New', Courier, monospace;
+   width: 100%;
+   padding: 13px;
+   font-size: 16px;
+   border-radius: 20px;
+   border: 1px solid #ddd;
+   background-color: #f4f4f4;
+   color: #333;
+   font-weight: bolder;
+   transition: border-color 1s ease, background-color 0.3s ease;
+}
+
+.input-group input:focus {
+   outline: none;
+   border-color: #fffc00;
+   background-color: #fff;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fffc00;
+}
+
+input.error-input:focus {
+    border-color: #ff3333;
+}
+
+.input-group input.error {
+    border-color: #ff3333;
+    background-color: #fff0f0;
+}
+
+.btn-register {
+   font-family: 'Courier New', Courier, monospace;
+   width: 100%;
+   padding: 16px;
+   background-color: #fffc00;
+   color: black;
+   font-size: 18px;
+   font-weight: bold;
+   border: none;
+   border-radius: 25px;
+   cursor: pointer;
+   transition: background-color 0.75s ease;
+}
+
+.btn-register:hover {
+   background-color: black;
+   color: yellow;
+}
+
+.login-here {
+   margin-top: 15px;
+   font-size: 14px;
+   color: #555;
+}
+
+.login-here a {
+   text-decoration: none;
+   color: #fffc00;
+}
+
+.login-here a:hover {
+   text-decoration: underline;
+}
+
+.error-message {
+    color: #ff3333;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    padding: 5px;
+}
+
+.error-input {
+    border-color: #ff3333 !important;
+    background-color: #fff0f0 !important;
+}
+
+@media (max-width: 480px) {
+   .register-box {
+       width: 90%;
+       padding: 30px;
+   }
+
+   .register-header h1 {
+       font-size: 24px;
+   }
+
+   .input-group input {
+       padding: 12px;
+       font-size: 14px;
+   }
+
+   .btn-register {
+       padding: 14px;
+       font-size: 16px;
+   }
+}

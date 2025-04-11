@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management System - Home</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    <script>
+        function redirectToLogo() {
+            window.location.href = 'logo.html';  // Only redirect to logo.html
+        }
+    </script>
+    
+    <style>
+        * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+        }
+        body {
+            font-family: 'Courier', sans-serif;
+            background-image: url('samuel-girven-2e4lbLTqPIo-unsplash.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: auto; /* Enable scrolling */
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            background-image: url('https://www.transparenttextures.com/patterns/ashlar-tiles.png');
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: none;
+            color: #fffc00;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: whitesmoke;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 100px;
+            z-index: 1;
+        }
+
+        .quote {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+            font-weight: bold;
+            color: #fffc00;
+            margin: 50px 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            background-image: url('https://www.transparenttextures.com/patterns/ashlar-tiles.png');
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 100%;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        /* .video-container video {
+            width: 100%;
+            height: 350px;
+            width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        } */
+
+        /* Sections */
+        section {
+            width: 100%;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 36px;
+            color: #fffc00;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .quote {
+                font-size: 24px;
+                margin: 30px 0;
+            }
+
+            .video-container iframe {
+                height: 300px;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login page modified.html">Login</a></li>
+
+        </ul>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="content-container">
+            <div class="quote">
+                "Turn your sweat into success, your pain into power, and your excuses into achievements." 💪
+            </div>
+            <div class="video-container">
+                <video controls autoplay width="500" style="border-radius: 15px;width: 70%;box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);">
+                    <source src = "gym cinematic  vid.mp4" type="video/mp4">
+                    <track label="English" kind="subtitles" srclang="en" src="English Subtitle.vtt" default>
+                    <track label="Malayalam" kind="subtitles" srclang="ml" src="Malayalam Subtitle.vtt" default>
+                    <track label="Hindi" kind="subtitles" srclang="ml" src="Hindi Subtitle.vtt" default>
+                    <track label="Hinglish" kind="subtitles" srclang="ml" src="Hinglish Subtitles.vtt" default>
+                </video>
+            </div>
+            <div class="audio">
+                <audio src="Sony A7S III X Fitness Commercial sound only.mp3" muted  controls autoplay></audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about"  style="background-color: rgba(0, 0, 0, 0.6);" >
+        <h2>About Us</h2>
+        <p>We are dedicated to helping you achieve your fitness goals, no matter where you're starting from.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background-color: rgba(0, 0, 0, 0.6);">
+        <h2>Our Services</h2>
+        <p>We offer personalized workout plans, group classes, and more to help you stay fit and healthy.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: rgba(0, 0, 0, 0.6);">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out to us for more information or to sign up for our programs.</p>
+    </section>
+
+    <!-- Map Section-->
+    <section id="map" style="width: 100%; height: 400px;">
+        <script>
+            var map = L.map('map').setView([19.099711, 72.916425], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            var marker = L.marker([19.099711, 72.916425]).addTo(map);
+        </script>
+    </section>
+
+    
+
+</body>
+</html>

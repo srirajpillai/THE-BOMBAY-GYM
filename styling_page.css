@@ -1,0 +1,228 @@
+body {
+    font-family: 'Courier', sans-serif;
+    background-image: url('1_5pyrdtIlYVp3ZvwR8C1Yrw.jpg');
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+    margin: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.error-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.error-content {
+    background: linear-gradient(145deg, #ff3333, #ff0000);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.error-header i {
+    font-size: 24px;
+}
+
+.error-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.error-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.error-content li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.error-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+
+.error-content button {
+    background: white;
+    color: #ff0000;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.error-content button:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.radio-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between elements */
+}
+
+.radio-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    background-image: url('https://www.transparenttextures.com/patterns/ashlar-tiles.png'); 
+    background-size: cover;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    position: relative;
+    z-index: 10;
+}
+
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bolder;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #fffc00;
+    background-color: #fff;
+}
+
+.btn-login {
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    padding: 16px;
+    background-color: #fffc00;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.75s ease;
+}
+
+.btn-login:hover {
+    
+    background-color: black;
+    color: yellow;
+}
+
+.forgot-password {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #fffc00;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.register {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.register a {
+    text-decoration: none;
+    color: #fffc00;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 480px) {
+    .login-box {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .login-header h1 {
+        font-size: 24px;
+    }
+
+    .input-group input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .btn-login {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
